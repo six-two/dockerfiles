@@ -22,9 +22,30 @@ After building an image, you can push it with:
 docker push ghcr.io/six-two/nmap-rootless
 ```
 
-## Container usage
+## Containers
 
-### Rootless nmap
+### csv2md
+
+Just a dockerfile for <https://github.com/lzakharov/csv2md> that uses a non-root user.
+You can use it as a template for any other pip package, if you just replace `csv2md` with the package you want to containerize.
+
+Jou can just pipe your CSV input into the docker command to convert it to a Markdown table:
+```bash
+echo -e "a,b,c\n1,2,3" | docker run --rm -i ghcr.io/six-two/csv2md
+```
+
+### nmap
+
+Normal nmap, just installed with `apk`.
+
+Example invocation:
+```bash
+docker run --rm -it ghcr.io/six-two/nmap 192.168.1.1 -F -sS
+```
+
+### nmap-rootless
+
+This container can run scans normally requiring root privileges, even though inside the container aa non-root user is used.
 
 Scan local gateway:
 ```bash
