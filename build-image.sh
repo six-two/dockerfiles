@@ -26,18 +26,20 @@ if ! is_installed docker; then
     fi
 fi
 
-if [[ $# -eq 1 ]]; then
+if [[ $# -ge 1 ]]; then
     NAME="$1"
+    shift
     if [[ -f "$NAME/Dockerfile" ]]; then
         cd "$NAME"
-        "$DOCKER" build . -t "ghcr.io/six-two/$NAME" # --no-cache
+        "$DOCKER" build . -t "ghcr.io/six-two/$NAME" "$@"
     else
         echo "[!] Unknown docker image '$NAME'"
         print_valid_images
         exit 1
     fi
 else
-    echo "[!] Usage: <DOCKER_IMAGE>"
+    echo "[!] Usage: <DOCKER_IMAGE> [DOCKER_BUILD_ARGS...]"
+    # examples or arguments: --no-cache 
     print_valid_images
     exit 1
 fi

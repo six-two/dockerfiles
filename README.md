@@ -1,6 +1,7 @@
 # Dockerfiles
 
-Dockerfiles for my images hosted at GitHub Container Registry (ghcr.io).
+Dockerfiles for my manually build images hosted at GitHub Container Registry (ghcr.io).
+You can see all images (including the ones built by GitHub Actions for my other projects) on my [packages page](https://github.com/six-two?tab=packages).
 
 ## Usage
 
@@ -22,6 +23,11 @@ After building an image, you can push it with:
 docker push ghcr.io/six-two/nmap-rootless
 ```
 
+When you first push an image, its visibility is set to private.
+So you need to go to the image page -> `Package Settings` -> Section `Danker Zone` -> `Visibility`, choose `public` and confirm.
+
+@TODO check and do for all images
+
 ## Containers
 
 ### csv2md
@@ -33,6 +39,19 @@ Jou can just pipe your CSV input into the docker command to convert it to a Mark
 ```bash
 echo -e "a,b,c\n1,2,3" | docker run --rm -i ghcr.io/six-two/csv2md
 ```
+
+### lualatex-for-cv
+
+lualatex container with some extra tools (`exiftool`, `qpdf`) and helper scripts.
+It will build your LaTeX file, set its metadata and also create a minified version (removes links if your original contained them).
+
+Assuming you have a file `anschreiben/anschreiben.tex`, that relies on some files from the parent directory, you can run the following command from the parent directory:
+```bash
+docker run --rm -it -v "$PWD:/share" -e "TITLE=Anschreiben" -e "AUTHOR=six-two" -w /share/anschreiben ghcr.io/six-two/lualatex-for-cv anschreiben.tex
+```
+
+This will set the `Title` metadata to `Anschreiben`, the `Author` to `six-two` and write the output file to `anschreiben/anschreiben.pdf`.
+A minified PDF will be in `anschreiben/anschreiben.min.pdf` and the LaTeX log in `anschreiben/anschreiben.log`.
 
 ### nmap
 
