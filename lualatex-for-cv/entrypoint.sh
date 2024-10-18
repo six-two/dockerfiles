@@ -14,7 +14,7 @@ fi
 
 PDF_FILE="$(echo "$1" | sed 's/.tex$/.pdf/')"
 # Remove the file to see if it can be built. Lualatex can fail with warnings, but still produce a PDF
-[[-f "$PDF_FILE" ]] && rm -- "$PDF_FILE"
+[[ -f "$PDF_FILE" ]] && rm -- "$PDF_FILE"
 if ! lualatex -interaction=batchmode "$@"; then
     echo "[!] Lualatex returned with error code $?. Last $LOG_LINES of the log are:"
     LOG_FILE="$(echo "$1" | sed 's/.tex$/.log/')"
@@ -22,8 +22,19 @@ if ! lualatex -interaction=batchmode "$@"; then
 fi
 
 if [[ -f "$PDF_FILE" ]]; then
-    /bin/fix-metadata.sh "$PDF_FILE"
-    /bin/optimize-break-links.sh "$PDF_FILE"
+    if [[ -z "$SKIP_FIX_METADATA" ]]; then
+        echo "[*] Fixing metadata for $PDF_FILE"
+        /bin/fix-metadata.sh "$PDF_FILE"
+    else
+        echo "[*] Skipping fixing metadata because SKIP_FIX_METADATA is set"
+    fi
+
+    if [[ -z "$SKIP_OPTIMIZE" ]]; then
+        echo "[*] Optimizing $PDF_FILE (will break links in .min.pdf)"
+        /bin/optimize-break-links.sh "$PDF_FILE"
+    else
+        echo "[*] Skipping optimizing PDF because SKIP_OPTIMIZE is set"
+    fi
 else
     echo "[-] Output PDF not found, skipped optimisation and metadata fixes"
     exit 1

@@ -53,6 +53,8 @@ docker run --rm -it -v "$PWD:/share" -e "TITLE=Anschreiben" -e "AUTHOR=six-two" 
 This will set the `Title` metadata to `Anschreiben`, the `Author` to `six-two` and write the output file to `anschreiben/anschreiben.pdf`.
 A minified PDF will be in `anschreiben/anschreiben.min.pdf` and the LaTeX log in `anschreiben/anschreiben.log`.
 
+By setting the environment variables `SKIP_FIX_METADATA` or `SKIP_OPTIMIZE` to something non-empty (like `docker run -e "SKIP_FIX_METADATA=yes" ...`), you can skip certain steps which speeds up the build.
+
 ### nmap
 
 Normal nmap, just installed with `apk`.
