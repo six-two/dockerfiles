@@ -6,7 +6,7 @@ on:
   push:
     # Since the changes will be for different images, giving normal version numbers makes no sense.
     # From time to time I will try to push v<COUNTER> (v1, v2, v3, ...) that you can tag and after some changes to a single image I will manually push the `latest` tag image
-    tags: ["v*"]
+    tags: ["v*", "dev"]
 
 env:
   REGISTRY: ghcr.io
@@ -53,8 +53,8 @@ jobs:
         id: push
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
-          context: .
-          file: ./${{ matrix.image }}/Dockerfile
+          context: ./${{ matrix.image }}
+          # file: ./${{ matrix.image }}/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

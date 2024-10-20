@@ -26,7 +26,7 @@ docker push ghcr.io/six-two/nmap-rootless
 When you first push an image, its visibility is set to private.
 So you need to go to the image page -> `Package Settings` -> Section `Danker Zone` -> `Visibility`, choose `public` and confirm.
 
-@TODO check and do for all images
+To allow the GitHub Actions to update the image, you also need to allow the repository access: `Package Settings` -> section `Manage Actions access` -> `Add Repository` -> select `dockerfiles` -> change `Role` to `Write`
 
 ## Containers
 
