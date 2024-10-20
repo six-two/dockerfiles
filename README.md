@@ -99,6 +99,15 @@ You requested a scan type which requires root privileges.
 QUITTING!
 ```
 
+### powerhub
+
+Containerized version of <https://github.com/AdrianVollmer/PowerHub>.
+
+Example invocation:
+```bash
+docker run --rm -it -v "$PWD:/share" -p 8080:8080 -p 8443:8443 ghcr.io/six-two/powerhub your-local-hostname-or-domain-fronting.com --no-auth
+```
+
 ### sourcemapper
 
 Containerized <https://github.com/denandz/sourcemapper>
