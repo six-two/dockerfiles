@@ -40,6 +40,20 @@ Jou can just pipe your CSV input into the docker command to convert it to a Mark
 echo -e "a,b,c\n1,2,3" | docker run --rm -i ghcr.io/six-two/csv2md
 ```
 
+### ffuf
+
+Just installs `ffuf` with apk and adds a couple wordlists I like to use for directory busting from [SecLists](https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content).
+
+Example invocation using included wordlist:
+```bash
+docker run --rm -it ghcr.io/six-two/ffuf -u http://127.0.0.1:8000/FUZZ -w /wordlists/common.txt -mc 200
+```
+
+Example invocation using a custom wordlist:
+```bash
+docker run --rm -it ghcr.io/six-two/ffuf -u http://127.0.0.1:8000/FUZZ -w /wordlists/common.txt -mc 200
+```
+
 ### lualatex-for-cv
 
 lualatex container with some extra tools (`exiftool`, `qpdf`) and helper scripts.
@@ -83,5 +97,14 @@ $ docker run --rm -it ghcr.io/six-two/nmap-rootless 192.168.1.1 -Pn -T5 -vv -sS
 
 You requested a scan type which requires root privileges.
 QUITTING!
+```
+
+### sourcemapper
+
+Containerized <https://github.com/denandz/sourcemapper>
+
+Example invocation:
+```bash
+docker run --rm -it -v "$PWD:/share" sourcemapper -output . -jsurl https://example.com/somescript.js
 ```
 
