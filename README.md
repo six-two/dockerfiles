@@ -108,6 +108,17 @@ Example invocation:
 docker run --rm -it -v "$PWD:/share" -p 8080:8080 -p 8443:8443 ghcr.io/six-two/powerhub your-local-hostname-or-domain-fronting.com --no-auth
 ```
 
+### scdl
+
+Containerized version of <https://github.com/scdl-org/scdl>.
+
+While there is a official docker file documented in the [wiki](https://github.com/scdl-org/scdl/wiki/Try-scdl-with-docker), I try to keep my python dockerfiles (like powerhub) similar to make them easier to maintain.
+
+Example invocation (will download `Never Gonna Give You Up.mp3` to your current directory):
+```bash
+docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/scdl -l https://soundcloud.com/rick-astley-official/never-gonna-give-you-up-4
+```
+
 ### sourcemapper
 
 Containerized <https://github.com/denandz/sourcemapper>
