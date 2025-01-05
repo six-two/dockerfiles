@@ -54,6 +54,15 @@ Example invocation using a custom wordlist:
 docker run --rm -it ghcr.io/six-two/ffuf -u http://127.0.0.1:8000/FUZZ -w /wordlists/common.txt -mc 200
 ```
 
+### hashid
+
+Just a dockerfile for <https://github.com/psypanda/hashID> that uses a non-root user.
+
+Excample invocation:
+```bash
+docker run --rm -it ghcr.io/six-two/hashid 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+```
+
 ### lualatex-for-cv
 
 lualatex container with some extra tools (`exiftool`, `qpdf`) and helper scripts.
