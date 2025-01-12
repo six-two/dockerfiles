@@ -21,9 +21,14 @@ jobs:
       matrix:
         include:
           - image: csv2md
-          - image: lualatex-for-cv
+          - image: ffuf
+          - image: hashid
+          # - image: lualatex-for-cv # comment out for faster action build
           - image: nmap
           - image: nmap-rootless
+          - image: powerhub
+          - image: scdl
+          - image: sourcemapper
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
       contents: read
