@@ -20,15 +20,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - image: csv2md
-          - image: ffuf
-          - image: hashid
-          # - image: lualatex-for-cv # comment out for faster action build
-          - image: nmap
-          - image: nmap-rootless
-          - image: powerhub
-          - image: scdl
-          - image: sourcemapper
+           # comment out unchanged images for faster action build
+          # - image: csv2md
+          # - image: ffuf
+          # - image: hashid
+          # - image: lualatex-for-cv
+          # - image: nmap
+          # - image: nmap-rootless
+          # - image: powerhub
+          # - image: scdl
+          # - image: sourcemapper
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
       contents: read
