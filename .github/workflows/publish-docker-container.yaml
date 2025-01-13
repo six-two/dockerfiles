@@ -27,7 +27,7 @@ jobs:
           # - image: lualatex-for-cv
           # - image: nmap
           # - image: nmap-rootless
-          # - image: powerhub
+          - image: powerhub
           # - image: scdl
           # - image: sourcemapper
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.

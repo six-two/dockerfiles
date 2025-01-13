@@ -117,6 +117,9 @@ Example invocation:
 docker run --rm -it -v "$PWD:/share" -p 8080:8080 -p 8443:8443 ghcr.io/six-two/powerhub your-local-hostname-or-domain-fronting.com --no-auth
 ```
 
+It should create a `powerhub` directory in the folder mounted to `/share`, which contains powerhub's modules, settings, clipbaord data and files.
+This way, these data should persist between multiple invocations of the container (assuming the same folder is volume mounted).
+
 ### scdl
 
 Containerized version of <https://github.com/scdl-org/scdl>.
