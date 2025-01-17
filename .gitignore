@@ -1,4 +1,11 @@
+# Ignore files in the current directory, so that I can run the test commands straight from the root of this repository
+
+## powerhub
 powerhub/modules/
 powerhub/ssl/
 powerhub/static/
 powerhub/workspace/
+
+## smbcrawler
+hosts.txt
+output.crwl

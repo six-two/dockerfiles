@@ -29,6 +29,7 @@ jobs:
           # - image: nmap-rootless
           - image: powerhub
           # - image: scdl
+          - image: smbcrawler
           # - image: sourcemapper
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:

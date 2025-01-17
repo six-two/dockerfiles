@@ -131,6 +131,16 @@ Example invocation (will download `Never Gonna Give You Up.mp3` to your current 
 docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/scdl -l https://soundcloud.com/rick-astley-official/never-gonna-give-you-up-4
 ```
 
+### smbcrawler
+
+Containerized version of <https://github.com/SySS-Research/smbcrawler>.
+Currently untested container.
+
+Scans hosts from `hosts.txt` and only do access checks:
+```bash
+docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/smbcrawler crawl -i hosts.txt -u YOUR_AD_USERNAME -p YOUR_AD_PASSWORD -d example.lan -t 10 -D 0
+```
+
 ### sourcemapper
 
 Containerized <https://github.com/denandz/sourcemapper>
