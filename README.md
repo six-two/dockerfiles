@@ -40,6 +40,16 @@ Jou can just pipe your CSV input into the docker command to convert it to a Mark
 echo -e "a,b,c\n1,2,3" | docker run --rm -i ghcr.io/six-two/csv2md
 ```
 
+### ffmpeg-rubberband
+
+A container for ffmpeg with the `rubberband` filter.
+It can be used to speed up or slow down music, while keeping the pitch the same.
+
+Example usage:
+```bash
+docker run -v "$PWD:/share" ghcr.io/six-two/ffmpeg-rubberband -i input.mp3 -filter:a "rubberband=tempo=2" output-twice-as-fast.mp3 -y
+```
+
 ### ffuf
 
 Just installs `ffuf` with apk and adds a couple wordlists I like to use for directory busting from [SecLists](https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content).

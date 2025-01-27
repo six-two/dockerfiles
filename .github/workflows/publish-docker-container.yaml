@@ -23,6 +23,7 @@ jobs:
           ## comment out unchanged images for faster action build
           # - image: csv2md
           # - image: ffuf
+          - image: ffmpeg-rubberband
           # - image: hashid
           # - image: lualatex-for-cv
           - image: nmap
