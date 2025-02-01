@@ -23,11 +23,12 @@ jobs:
           ## comment out unchanged images for faster action build
           # - image: csv2md
           # - image: ffuf
-          - image: ffmpeg-rubberband
+          # - image: ffmpeg-rubberband
           # - image: hashid
           # - image: lualatex-for-cv
-          - image: nmap
-          - image: nmap-rootless
+          - image: nginx-reverse-proxy
+          # - image: nmap
+          # - image: nmap-rootless
           # - image: powerhub
           # - image: scdl
           # - image: smbcrawler

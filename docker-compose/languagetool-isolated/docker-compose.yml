@@ -1,0 +1,47 @@
+---
+
+# Test with: curl --data "language=en-US&text=a simple test" http://localhost:8081/v2/check
+
+networks:
+  # A network that can not reach anything else
+  internal_network:
+    internal: true
+
+services:
+  # We deploy languagetool in an isolated network, that can not reach the internet
+  languagetool:
+    image: erikvl87/languagetool
+    # build:
+    #   context: .  # Directory where your Dockerfile is located
+    container_name: languagetool-isolated
+    restart: always
+    # No need to expose the port, it would not work from the internal network anyways
+    # ports:
+    #   - 8010:8010
+    environment:
+      # - langtool_languageModel=/ngrams
+      # Increase minimum and maximum heap size to prevent crashes
+      - Java_Xms=512m
+      - Java_Xmx=2g
+      # - /path/to/ngrams/data:/ngrams
+      # - /path/to/logback.xml:/LanguageTool/logback.xml:ro
+    networks:
+      - internal_network
+
+  # Simple reverse proxy that is dual homed. It ensures that we can reach languagetool-isolated, although it is in an isolated network
+  proxy:
+    image: ghcr.io/six-two/nginx-reverse-proxy
+    container_name: languagetool-isolated-proxy
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+    - LISTEN_PORT=8081
+    - BACKEND_HOST=languagetool-isolated
+    - BACKEND_PORT=8010
+    networks:
+      - internal_network
+      - default
+    depends_on:
+      - languagetool
+
