@@ -73,6 +73,22 @@ Excample invocation:
 docker run --rm -it ghcr.io/six-two/hashid 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
 ```
 
+### languagetool
+
+This is a small wrapper around `erikvl87/languagetool` that allows you to specify the custom words you want to include to the dictoionaries at runtime.
+Compared to the suggestion in the original repo this allows you to more easily import custom wordlists, since you do not need to rebuild the container each time.
+For each language directory, you can mount a file at `/share/custom_words_<LANGUAGE>.txt`.
+Here `<LANGUAGE>` is the short name of the language like `en` for english and `de` for german.
+The contents of the file will be added to the dictionary for the given language.
+Each line of the file should contain exactly one word.
+
+If you create a file called `/share/custom_words_any.txt`, then the contents will be added to the dictionaries of all languages.
+
+Example invocation (assumes you have your custom wordlists stored in `~/.config/languagetool`):
+```bash
+docker run --rm -it -p 8081:8010 -v "$HOME/.config/languagetool:/share:ro" ghcr.io/six-two/languagetool
+```
+
 ### lualatex-for-cv
 
 lualatex container with some extra tools (`exiftool`, `qpdf`) and helper scripts.
@@ -160,3 +176,14 @@ Example invocation:
 docker run --rm -it -v "$PWD:/share" sourcemapper -output . -jsurl https://example.com/somescript.js
 ```
 
+## docker-compose
+
+This contains some docker-compose configuration files I built.
+The files are in the folder `./docker-compose/`.
+
+### languagetool-isolated
+
+If you use language tool to check sensitive information (for example if it checks all text entered in your browser), you likely want to make sure that the tool will not send them to the Internet.
+This docker compose tool deploys the languagetool container into an isolated network, which should not be able to reach any services on your host or in the Internet.
+It also deploys a simple nginx reverse proxy, that allows you to reach the port exposed by the languagetool container.
+It does this by being connected to in the normal `default` network as well as the isolated network used by languagetool.
