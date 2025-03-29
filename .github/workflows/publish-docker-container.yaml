@@ -26,11 +26,11 @@ jobs:
           # - image: ffmpeg-rubberband
           # - image: hashid
           # - image: lualatex-for-cv
-          - image: nginx-reverse-proxy
+          # - image: nginx-reverse-proxy
           # - image: nmap
           # - image: nmap-rootless
-          - image: penelope
-          - image: platformio
+          # - image: penelope
+          # - image: platformio
           # - image: powerhub
           # - image: scdl
           # - image: smbcrawler
