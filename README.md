@@ -134,6 +134,48 @@ You requested a scan type which requires root privileges.
 QUITTING!
 ```
 
+### penelope
+
+Attempt to dockerize <https://github.com/brightio/penelope>.
+The volume mount is so that your logs will be stored outsude the container.
+Networking is pretty annoying, since there are two different ways that are both not perfect.
+
+#### Port forwarding
+
+This mode sucks, because the IP addresses in the payloads will always be wrong.
+Example usage:
+```bash
+docker run --rm -it -p 80:80 -p 4444:4444 -p 8000:8000 -v "$HOME/.penelope:/home/app/.penelope" ghcr.io/six-two/penelope 80 4444
+```
+
+
+#### Host network
+
+Listen using docker's host network mode (should in theory work easiest):
+```bash
+docker run --rm -it --network=host -v "$HOME/.penelope:/home/app/.penelope" ghcr.io/six-two/penelope 80 4444
+```
+
+On macOS, you need to open `Docker Desktop` and enable `Settings` -> `Resources` -> `Network` -> `Enable host network` (see [dockerdocs](https://docs.docker.com/engine/network/tutorials/host/)).
+Even then it still does not recognize the correct IP addresses on macOS.
+Maybe on a Linux host it works better?
+
+### platformio
+
+Containerized version of the [PlatformIO Core CLI](https://docs.platformio.org/en/latest/core/installation/methods/pypi.html).
+
+You can use it to compile embedded software projects:
+```bash
+docker run --rm -it -v "$HOME/.platformio:/home/app/.platformio" -v "$PWD:/share" ghcr.io/six-two/platformio -f run
+```
+
+If your project depends on other local projects, you may have to play around with the mounts and the working directory.
+The safest bet is mounting the root directory of all your projects (like `~/Documents`) and then setting the working dir to `/share/RELATIVE_PATH_TO_PROJECT_FROM_DOCUMENTS`.
+If you only need projects from the parent folder, you can also do something like this from your current project's folder:
+```bash
+docker run --rm -it -v "$HOME/.platformio:/home/app/.platformio" -v "$PWD/..:/share" -w "/share/$(basename "$PWD")" ghcr.io/six-two/platformio -f run
+```
+
 ### powerhub
 
 Containerized version of <https://github.com/AdrianVollmer/PowerHub>.

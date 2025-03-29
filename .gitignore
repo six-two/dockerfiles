@@ -9,3 +9,6 @@ powerhub/workspace/
 ## smbcrawler
 hosts.txt
 output.crwl
+
+## macOS
+.DS_Store

@@ -29,6 +29,8 @@ jobs:
           - image: nginx-reverse-proxy
           # - image: nmap
           # - image: nmap-rootless
+          - image: penelope
+          - image: platformio
           # - image: powerhub
           # - image: scdl
           # - image: smbcrawler
