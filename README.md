@@ -188,6 +188,25 @@ docker run --rm -it -v "$PWD:/share" -p 8080:8080 -p 8443:8443 ghcr.io/six-two/p
 It should create a `powerhub` directory in the folder mounted to `/share`, which contains powerhub's modules, settings, clipbaord data and files.
 This way, these data should persist between multiple invocations of the container (assuming the same folder is volume mounted).
 
+### pytools
+
+A python container containing some common build tools for python packages such as `build` (build pip packages), `pip-compile` (update pinned dependencies), and `twine` (upload pip packages).
+
+Update pinned dependencies:
+```bash
+docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/pytools pip-compile -U
+```
+
+Build pip package:
+```bash
+docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/pytools
+```
+
+Upload pip package:
+```bash
+docker run --rm -it -v "$PWD:/share" -v "$HOME/.pypirc:/home/app/.pypirc:ro" ghcr.io/six-two/pytools twine upload dist/*
+```
+
 ### scdl
 
 Containerized version of <https://github.com/scdl-org/scdl>.

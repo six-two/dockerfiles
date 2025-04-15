@@ -32,6 +32,7 @@ jobs:
           # - image: penelope
           # - image: platformio
           # - image: powerhub
+          - image: pytools
           # - image: scdl
           # - image: smbcrawler
           # - image: sourcemapper
