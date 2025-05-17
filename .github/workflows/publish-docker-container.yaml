@@ -35,6 +35,7 @@ jobs:
           - image: pytools
           # - image: scdl
           # - image: smbcrawler
+          - image: sliver
           # - image: sourcemapper
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
