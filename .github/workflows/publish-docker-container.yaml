@@ -29,14 +29,14 @@ jobs:
           # - image: nginx-reverse-proxy
           # - image: nmap
           # - image: nmap-rootless
-          - image: ntlm_challenger
+          # - image: ntlm_challenger
           # - image: penelope
           # - image: platformio
           # - image: powerhub
-          - image: pytools
+          # - image: pytools
           # - image: scdl
           # - image: smbcrawler
-          - image: sliver
+          # - image: sliver
           # - image: sourcemapper
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:

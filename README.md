@@ -227,6 +227,15 @@ Example invocation (will download `Never Gonna Give You Up.mp3` to your current 
 docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/scdl -l https://soundcloud.com/rick-astley-official/never-gonna-give-you-up-4
 ```
 
+### sliver
+
+A containerized version of the Sliver C2 framework (<https://github.com/BishopFox/sliver>).
+
+Example usage to start sliver server:
+```bash
+docker run -it -v "$PWD:/share" -v "$HOME/.sliver:/home/app/.sliver" -p 53:53 -p 80:80 -p 443:443 -p 8888:8888 ghcr.io/six-two/sliver
+```
+
 ### smbcrawler
 
 Containerized version of <https://github.com/SySS-Research/smbcrawler>.
