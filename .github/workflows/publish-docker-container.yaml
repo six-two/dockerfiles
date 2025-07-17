@@ -29,6 +29,7 @@ jobs:
           # - image: nginx-reverse-proxy
           # - image: nmap
           # - image: nmap-rootless
+          - image: ntlm_challenger
           # - image: penelope
           # - image: platformio
           # - image: powerhub

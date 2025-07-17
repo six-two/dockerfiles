@@ -134,6 +134,15 @@ You requested a scan type which requires root privileges.
 QUITTING!
 ```
 
+### ntlm_challenger
+
+A dockerized version of <https://github.com/nopfor/ntlm_challenger>.
+
+Example usage:
+```bash
+docker run --rm -it ghcr.io/six-two/ntlm_challenger https://example.com/url-with-ntlm-authentication-option/
+```
+
 ### penelope
 
 Attempt to dockerize <https://github.com/brightio/penelope>.
