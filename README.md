@@ -255,6 +255,34 @@ Example invocation:
 docker run --rm -it -v "$PWD:/share" sourcemapper -output . -jsurl https://example.com/somescript.js
 ```
 
+## venv
+
+A container for working with a python virtual environment.
+The idea is that the virtual environment stays persistent and is mounted into the container each time.
+By default the venv is stored in a folder called `venv.docker`.
+This makes it faster than using a blank container and installing the dependencies each time, while avoiding the hassle of having to deal with a bunch of different docker containers (one for each project) filling up your `docker ps -a`.
+
+As the python libraries and tools are only run in a docker container, this provides more security when dealing with less trustworthy code (random unknown libraries, PRs, etc).
+You can either start an interactive shell that has your venv loaded:
+```
+$ docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/venv
+(venv.docker) app@78337c223c74:/share$ pip freeze
+babel==2.17.0
+backrefs==5.9
+[...]
+```
+
+Or you can supply a single command you want to run:
+```bash
+docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/venv mkdocs build
+```
+
+As a convenience feature I also added a `/bin/mkdocs-serve.sh` script to the container, that quickly installs all dependencies from `requirements.txt`, installs the current directory as a python package and then runs `mkdocs serve` while binding to all interfaces.
+This allows me to use a single command fro testing while developing mkdocs plugins:
+```bash
+docker run --rm -it -v "$PWD:/share" -p 127.0.0.1:8000:8000 ghcr.io/six-two/venv /bin/mkdocs-serve.sh
+```
+
 ## docker-compose
 
 This contains some docker-compose configuration files I built.
