@@ -26,6 +26,7 @@ jobs:
           # - image: ffmpeg-rubberband
           # - image: hashid
           # - image: lualatex-for-cv
+          ## mangabuddy-scraper is intentionally not published
           # - image: nginx-reverse-proxy
           # - image: nmap
           # - image: nmap-rootless

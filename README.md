@@ -104,6 +104,29 @@ A minified PDF will be in `anschreiben/anschreiben.min.pdf` and the LaTeX log in
 
 By setting the environment variables `SKIP_FIX_METADATA` or `SKIP_OPTIMIZE` to something non-empty (like `docker run -e "SKIP_FIX_METADATA=yes" ...`), you can skip certain steps which speeds up the build.
 
+### mangabuddy-scraper (image not published)
+
+Containerized version of <https://github.com/TUVIMEN/mangabuddy-scraper>.
+
+This Dockerfile was created my me for educational purposes (seeing how to build minimal alpine images that build applications from source).
+The resulting docker image is not published.
+
+Disclaimer: Usage of this tool may violate copyright.
+You are responsible for your own actions, I take no responsibility.
+
+Example usage:
+```bash
+./build-image.sh mangabuddy-scraper
+```
+```bash
+docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/mangabuddy-scraper <URL>
+```
+
+You can also use the image as a dockerized version of <https://github.com/TUVIMEN/reliq/>:
+```bash
+docker run --rm -it -v "$PWD:/share" --entrypoint=/usr/bin/reliq ghcr.io/six-two/mangabuddy-scraper <YOUR_ARGUMENTS...>
+```
+
 ### nmap
 
 Normal nmap, just installed with `apk`.

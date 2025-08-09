@@ -10,5 +10,9 @@ powerhub/workspace/
 hosts.txt
 output.crwl
 
+## mangabudy-scraper
+info.json
+[0-9]*.jpg
+
 ## macOS
 .DS_Store
