@@ -14,5 +14,9 @@ output.crwl
 info.json
 [0-9]*.jpg
 
+## mingw
+mingw/*.exe
+mingw/*.dll
+
 ## macOS
 .DS_Store

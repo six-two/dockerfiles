@@ -27,6 +27,7 @@ jobs:
           # - image: hashid
           # - image: lualatex-for-cv
           ## mangabuddy-scraper is intentionally not published
+          - image: mingw
           # - image: nginx-reverse-proxy
           # - image: nmap
           # - image: nmap-rootless

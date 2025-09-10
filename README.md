@@ -127,6 +127,29 @@ You can also use the image as a dockerized version of <https://github.com/TUVIME
 docker run --rm -it -v "$PWD:/share" --entrypoint=/usr/bin/reliq ghcr.io/six-two/mangabuddy-scraper <YOUR_ARGUMENTS...>
 ```
 
+### mingw
+
+A Debian based image for [mingw-w64](https://www.mingw-w64.org/).
+Useful for cross compilation from macOS or Linux to Windows.
+By default, it invokes `x86_64-w64-mingw32-gcc`, which compiles for 64-bit Windows.
+
+Example invocation that compiles a simple C file:
+```bash
+docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/mingw test.c -o test.exe
+```
+
+There are a bunch of other mingw executables installed.
+You can list them with:
+```bash
+docker run --rm -it -v "$PWD:/share" --entrypoint=bash ghcr.io/six-two/mingw -c "ls -1 /bin/*mingw*"
+```
+
+And you can directly use a different compiler (like 32 bit only) via the entrypoint:
+```bash
+docker run --rm -it -v "$PWD:/share" --entrypoint=/bin/i686-w64-mingw32-gcc ghcr.io/six-two/mingw test.c -o test32.exe
+```
+
+
 ### nmap
 
 Normal nmap, just installed with `apk`.
