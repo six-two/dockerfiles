@@ -27,7 +27,7 @@ jobs:
           # - image: hashid
           # - image: lualatex-for-cv
           ## mangabuddy-scraper is intentionally not published
-          - image: mingw
+          # - image: mingw
           # - image: nginx-reverse-proxy
           # - image: nmap
           # - image: nmap-rootless
@@ -40,7 +40,7 @@ jobs:
           # - image: smbcrawler
           # - image: sliver
           # - image: sourcemapper
-          - image: venv
+          # - image: venv
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
       contents: read
