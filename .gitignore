@@ -1,5 +1,8 @@
 # Ignore files in the current directory, so that I can run the test commands straight from the root of this repository
 
+## kokoro-tts
+kokoro-tts/output.wav
+
 ## powerhub
 powerhub/modules/
 powerhub/ssl/
