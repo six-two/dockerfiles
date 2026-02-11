@@ -8,6 +8,11 @@ COPY download.py .
 RUN python3 ./download.py; rm download.py
 
 USER root
+# Needed to prevent
+# [...]
+#   File "/home/app/.local/lib/python3.12/site-packages/sounddevice.py", line 71, in <module>
+#     raise OSError('PortAudio library not found')
+# OSError: PortAudio library not found
 RUN apt-get update && apt-get install -y \
     python3-dev \
     build-essential \

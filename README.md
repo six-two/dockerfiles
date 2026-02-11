@@ -40,6 +40,34 @@ Jou can just pipe your CSV input into the docker command to convert it to a Mark
 echo -e "a,b,c\n1,2,3" | docker run --rm -i ghcr.io/six-two/csv2md
 ```
 
+### firepwn
+
+Containerized version of <https://github.com/0xbigshaq/firepwn-tool>.
+It is useful when pentesting Firebase apps, since if there are misconfigurations you can use it to register users and list, download, upload or delete files from Firebase Storage or modify the Firestore database.
+
+Usage:
+```bash
+docker run --rm -d -p 127.0.0.1:3000:3000 ghcr.io/six-two/firepwn
+```
+
+Then open <http://127.0.0.1:3000> in a browser.
+
+### firescan
+
+Containerized version of <https://github.com/JacobDavidAlcock/firescan>.
+It runs a bunch of check against Firebase projects to try to find vulnerabilities.
+Take it with a grain of salt: It did not find some quite glaring vulnerabilities for me, but reportet harmless publicly accessible files in `.well-known/` directories in buckets as high vulnerabilities.
+
+Example usage:
+```bash
+docker run --rm -it -v "$PWD:/share" -w "/share" ghcr.io/six-two/firescan
+```
+
+Or to resume a session ended with `save-quit`:
+```bash
+docker run --rm -it -v "$PWD:/share" -w "/share" ghcr.io/six-two/firescan --resume
+```
+
 ### ffmpeg-rubberband
 
 A container for ffmpeg with the `rubberband` filter.

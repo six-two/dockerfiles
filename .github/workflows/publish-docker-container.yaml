@@ -24,6 +24,8 @@ jobs:
           # - image: csv2md
           # - image: ffuf
           # - image: ffmpeg-rubberband
+          - image: firepwn
+          - image: firescan
           # - image: hashid
           # - image: lualatex-for-cv
           ## mangabuddy-scraper is intentionally not published
