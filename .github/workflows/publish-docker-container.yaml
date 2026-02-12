@@ -22,11 +22,13 @@ jobs:
         include:
           ## comment out unchanged images for faster action build
           # - image: csv2md
-          # - image: ffuf
           # - image: ffmpeg-rubberband
+          # - image: ffuf
           # - image: firepwn
           # - image: firescan
           # - image: hashid
+          - image: kokoro-tts
+          - image: languagetool
           # - image: lualatex-for-cv
           ## mangabuddy-scraper is intentionally not published
           # - image: mingw
@@ -39,8 +41,8 @@ jobs:
           # - image: powerhub
           # - image: pytools
           # - image: scdl
-          # - image: smbcrawler
           # - image: sliver
+          # - image: smbcrawler
           # - image: sourcemapper
           # - image: venv
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
