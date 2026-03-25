@@ -329,7 +329,7 @@ Example invocation:
 docker run --rm -it -v "$PWD:/share" sourcemapper -output . -jsurl https://example.com/somescript.js
 ```
 
-## venv
+### venv
 
 A container for working with a python virtual environment.
 The idea is that the virtual environment stays persistent and is mounted into the container each time.
@@ -355,6 +355,15 @@ As a convenience feature I also added a `/bin/mkdocs-serve.sh` script to the con
 This allows me to use a single command fro testing while developing mkdocs plugins:
 ```bash
 docker run --rm -it -v "$PWD:/share" -p 127.0.0.1:8000:8000 ghcr.io/six-two/venv /bin/mkdocs-serve.sh
+```
+
+### yt-dlp
+
+Containerized version of <https://github.com/yt-dlp/yt-dlp>.
+
+Example invocation:
+```bash
+docker run --rm -it -v "$PWD:/share" -w "/share" ghcr.io/six-two/yt-dlp https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ```
 
 ## docker-compose
