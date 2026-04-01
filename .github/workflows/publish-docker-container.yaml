@@ -41,6 +41,7 @@ jobs:
           # - image: powerhub
           # - image: pytools
           # - image: scdl
+          - image: semgrep-extra-rules
           # - image: sliver
           # - image: smbcrawler
           # - image: sourcemapper

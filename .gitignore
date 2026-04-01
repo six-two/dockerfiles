@@ -21,6 +21,10 @@ info.json
 mingw/*.exe
 mingw/*.dll
 
+## semgrep-extra-rules
+semgrep.sarif
+semgrep.log
+
 ## yt-dlp
 Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster) \[dQw4w9WgXcQ].mp4
 

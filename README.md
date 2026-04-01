@@ -301,6 +301,25 @@ Example invocation (will download `Never Gonna Give You Up.mp3` to your current 
 docker run --rm -it -v "$PWD:/share" ghcr.io/six-two/scdl -l https://soundcloud.com/rick-astley-official/never-gonna-give-you-up-4
 ```
 
+### semgrep-extra-rules
+
+An extended version of `semgrep/semgrep`, that runs as non-root user and has a bunch of extra community rules in `/rules`.
+
+Example invocation, uses bundled rules to scan the current directory:
+
+```bash
+docker run --rm -it -v "$PWD:/src" ghcr.io/six-two/semgrep-extra-rules | tee semgrep.log
+```
+
+To do a custom scan, add all arguments.
+This is equivalent to the default scan of the image:
+
+```bash
+docker run --rm -it -v "$PWD:/src" ghcr.io/six-two/semgrep-extra-rules scan --metrics=off --no-git-ignore --disable-nosem --sarif-output=semgrep.sarif --config=/rules . | tee semgrep.log
+```
+
+If you want to add extra rules, just mount them into a subdirectory of `/rules`, for example with `-v "$HOME/code/custom-semgrep-rules:/rules/custom:ro"`.
+
 ### sliver
 
 A containerized version of the Sliver C2 framework (<https://github.com/BishopFox/sliver>).
