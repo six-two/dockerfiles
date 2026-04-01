@@ -396,3 +396,11 @@ If you use language tool to check sensitive information (for example if it check
 This docker compose tool deploys the languagetool container into an isolated network, which should not be able to reach any services on your host or in the Internet.
 It also deploys a simple nginx reverse proxy, that allows you to reach the port exposed by the languagetool container.
 It does this by being connected to in the normal `default` network as well as the isolated network used by languagetool.
+
+## Notes to Self
+
+- Update GitHub actions from time to time with a python container and:
+    ```bash
+    pip install gha-update
+    gha-update
+    ```
