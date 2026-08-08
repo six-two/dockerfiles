@@ -36,10 +36,12 @@ jobs:
           # - image: nmap
           # - image: nmap-rootless
           # - image: ntlm_challenger
+          - image: pdf-merge-a4
           # - image: penelope
           # - image: platformio
           # - image: powerhub
           # - image: pytools
+          - image: romaji-converter
           # - image: scdl
           # - image: semgrep-extra-rules
           # - image: sliver
