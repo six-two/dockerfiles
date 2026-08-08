@@ -3,6 +3,9 @@
 ## kokoro-tts
 kokoro-tts/output.wav
 
+# pdf-merge-a4
+pdf-merge-a4/**/*.pdf
+
 ## powerhub
 powerhub/modules/
 powerhub/ssl/
